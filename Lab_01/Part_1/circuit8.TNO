@@ -104,39 +104,39 @@ VZERO               0.000 (*)
 DC Operating Point Voltages
 ===========================
 Node         Voltage  Node         Voltage  Node         Voltage 
-1             5.000   VOUT          5.000   VIN           0.000  
-4             5.010n 
+1             5.000   VOUT          3.125   VIN           0.000  
+4            20.362n 
 
 
 Operating point for devices of type Bipolar Junction Transistors NPN
 ====================================================================
 Instance:                  Q1
 Using model:       $GENERIC_N
-IB                    -5.010p
-IC                    15.510p
-VBE                    5.010n
-VBC                   -5.000 
-VCE                    5.000 
-BETADC                -3.096 
-GM                   169.053p
+IB                    -4.072p
+IC                    12.451p
+VBE                   20.362n
+VBC                   -3.125 
+VCE                    3.125 
+BETADC                -3.057 
+GM                   166.051p
 RPI                   19.098G
 RX                     0.000 
-RO                   869.565G
+RO                   898.876G
 CPI                   40.000p
-CMU                   10.513p
+CMU                   12.834p
 CBX                    0.000 
 CJS                    0.000 
-BETAAC                 3.229 
-FT                   532.645m
+BETAAC                 3.171 
+FT                   500.207m
 
 DC Power Terms:
-PD                    77.550p
+PD                    38.911p
 PS                     0.000 
 
 DC Pin Currents:
-Ib                    -5.010p
-Ic                    15.510p
-Ie                   -10.500p
+Ib                    -4.072p
+Ic                    12.451p
+Ie                    -8.379p
 Is                     0.000 
 
 Condition:
@@ -146,12 +146,23 @@ State                     OFF
 
 Operating point for devices of type Resistor
 ============================================
-Instance:                   RK               RG
+Instance:                   RK               RG               R1
 DC Power Terms:
-PD                  3.129E-020       2.510E-020
+PD                     29.297m       8.293E-020          48.828m
 
 DC Pin Currents:
-Ir                     16.148p          -5.010p
+Ir                     15.625m          -4.072p          15.625m
+
+
+
+Operating point for devices of type Capacitor
+=============================================
+Instance:                   C1
+DC Power Terms:
+PS                      0.000 
+
+DC Pin Currents:
+Ic                      0.000 
 
 
 
@@ -163,7 +174,7 @@ DC Power Terms:
 PG                      0.000 
 
 DC Pin Currents:
-ISource                 5.010p
+ISource                 4.072p
 
 
 
@@ -171,9 +182,9 @@ Operating point for devices of type SPICE Source
 ================================================
 Instance:                  V2
 DC Power Terms:
-PG                    80.741p
+PG                    78.125m
 
 DC Pin Currents:
-ISource              -16.148p
+ISource              -15.625m
 
 

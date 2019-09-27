@@ -2,10 +2,10 @@
 FileType=CIR
 Version=9.00
 Program=Micro-Cap
-Screen=1280,1024
+Screen=1536,864
 MCAPVersion=9.0.6.1
 Key ID=2 233 293 684
-NLCnt=22
+NLCnt=33
 TXCnt=5
 
 [shapedef]
@@ -39,6 +39,14 @@ PolyLine=36,0
 PolyLine=48,0
 PolyLine=48,0
 Current=32,8,16,8
+
+[shapedef]
+Name=Capacitor
+Line=0,0,22,0
+Line=22,-8,22,8
+Line=26,-8,26,8
+Line=26,0,48,0
+Current=32,12,16,12
 
 [shapedef]
 Name=NPN
@@ -89,7 +97,7 @@ PolyLine=14,2
 Name=Resistor
 Definition=Resistor
 Shape=Resistor
-Mask=6657
+Mask=6913
 memo=Resistor
 Label Offset=18,6,8,11
 PinCnt=2
@@ -111,7 +119,7 @@ Pin="Minus",0,0,-19,-4
 Name=Battery
 Definition=Battery
 Shape=Battery
-Mask=4865
+Mask=4097
 memo=Battery
 Label Offset=19,7,10,13
 PinCnt=2
@@ -134,14 +142,25 @@ Pin="Emitter",3,3,5,1
 Name=Ground
 Definition=Ground
 Shape=Ground
-Mask=1793
+Mask=1025
 memo=Ground
 Label Offset=0,0,0,0
 PinCnt=1
 Pin="PinA",0,0,-3,-7
 
+[compdef]
+Name=Capacitor
+Definition=Capacitor
+Shape=Capacitor
+Mask=7937
+memo=Capacitor
+Label Offset=16,12,12,12
+PinCnt=2
+Pin="Plus",6,0,-3,-5
+Pin="Minus",0,0,-14,-5
+
 [Circuit]
-Window Placement=2,3, -1,-1, -4,-30, 22,29,819,635
+Window Placement=2,3, -1,-1, -8,-31, 52,52,1081,543
 Default Object=Color=#000080
 Default Object Font=Height=-15,FStyle=0,Color=#000080,Name=Arial
 Default Object Apply Border To Text=No
@@ -173,8 +192,7 @@ Digital F Color=#FFFF00
 Digital 1 Color=#FF0000
 Digital X Color=#C0C0C0
 Digital Z Color=#808080
-Window Placement in Transient Analysis=2,3, 0,865, -4,-30, 44,58,1104,664
-Window Placement in DC Analysis=2,3, 160,865, -4,-30, 154,203,1214,809
+Window Placement in Transient Analysis=2,3, 0,695, -8,-31, 61,483,1363,978
 SpiceType=AMBIGUOUS
 Block Select Color=#51F998
 TitleBlock Field_1=$name
@@ -197,7 +215,7 @@ Show Grid Text=True
 
 [Comp]
 Name=Resistor
-Grid=79,23
+Grid=79,21
 Rot=5
 Page=2
 
@@ -220,7 +238,7 @@ ONV=-34,-21,PART,Rg
 Style=8192
 
 [Attr]
-ONV=-31,-36,RESISTANCE,1k
+ONV=-31,-36,RESISTANCE,5k
 Style=8192
 
 [Comp]
@@ -238,7 +256,7 @@ ONV=-67,-39,MODEL,IMPULSE
 
 [Comp]
 Name=Battery
-Grid=87,38
+Grid=100,39
 Rot=3
 Page=2
 
@@ -278,11 +296,11 @@ Grids=76,27,76,28
 Page=2
 
 [Wire]
-Grids=79,13,87,13
+Grids=79,13,100,13
 Page=2
 
 [Wire]
-Grids=87,13,87,32
+Grids=100,13,100,33
 Page=2
 
 [Wire]
@@ -290,11 +308,11 @@ Grids=79,30,79,40
 Page=2
 
 [Wire]
-Grids=87,38,87,40
+Grids=100,39,100,40
 Page=2
 
 [Wire]
-Grids=79,40,87,40
+Grids=79,40,85,40
 Page=2
 
 [Wire]
@@ -312,7 +330,7 @@ Rot=7
 Page=2
 
 [Wire]
-Grids=79,23,79,24
+Grids=79,21,79,22
 Page=2
 
 [Wire]
@@ -327,12 +345,76 @@ Page=2
 Grids=79,13,79,15
 Page=2
 
+[Comp]
+Name=Resistor
+Grid=85,37
+Rot=3
+Page=2
+
+[Attr]
+ONV=-22,-23,PART,R1
+Style=8192
+
+[Attr]
+ONV=-26,-35,RESISTANCE,200
+Style=8192
+
+[Comp]
+Name=Capacitor
+Grid=92,31
+Rot=7
+Page=2
+
+[Attr]
+ONV=-26,12,PART,C1
+Style=8192
+
+[Attr]
+ONV=-30,24,CAPACITANCE,50p
+Style=8192
+
 [Wire]
-Grids=79,15,79,17
+Grids=85,37,85,40
+Page=2
+
+[Wire]
+Grids=85,40,92,40
+Page=2
+
+[Wire]
+Grids=92,37,92,40
+Page=2
+
+[Wire]
+Grids=92,40,100,40
+Page=2
+
+[Wire]
+Grids=92,24,92,31
+Page=2
+
+[Wire]
+Grids=85,24,85,31
+Page=2
+
+[Wire]
+Grids=85,24,92,24
+Page=2
+
+[Wire]
+Grids=85,22,85,24
+Page=2
+
+[Wire]
+Grids=79,22,85,22
+Page=2
+
+[Wire]
+Grids=79,22,79,24
 Page=2
 
 [Grid Text]
-Text="Ключ на БТ"
+Text="BT key with load"
 Grid=61,19
 Page=2
 CBorder=NONE
@@ -475,7 +557,6 @@ Type=Text
 Print=False
 Enable=True
 Name=Models
-SB 0=58,2
 
 [Page]
 Index=2
@@ -486,9 +567,9 @@ Name=Main
 Scale 0=1
 Scale 1=1
 Scale 2=1
-SB 3=303,20
+SB 3=303,68
 Scale 3=0.5
-Grid=63,28
+Grid=104,27
 
 [Page]
 Index=3
@@ -519,7 +600,7 @@ Len=139
 .MODEL IMPULSE PUL (P1=50n P2=51n P3=600n P4=601n P5=1.6u)
 
 [Transient]
-Window Placement=2,3, 0,865, -4,-30, 44,58,1104,664
+Window Placement=2,3, 0,695, -8,-31, 61,483,1363,978
 Font=Height=-15,FStyle=0,Color=#0000FF,Name=Arial
 WinBackGround Color=#FFFFFF
 Select Color=#FF0000
@@ -671,12 +752,12 @@ Object=MeasureH
 Locked=True
 EndPoint=ArrowF
 CBorder=#000080
-w=1
-AliasID1=2
+w=0
+AliasID1=1
 w2=1
 AliasID2=2
-Pos=1.650250417362271e-006,1.252086811353441,1.672212978369384e-006,2.4407789162051
-Posm=1.848178137651822
+Pos=6.000000000000001e-007,5,8.359322033898306e-007,1.701212770322055
+Posm=3.35
 Font=Height=-15,FStyle=0,Color=#000080,Name=Arial
 Format=3
 
@@ -690,13 +771,12 @@ w=0
 AliasID1=1
 w2=1
 AliasID2=2
-Pos=6.010016694490818e-007,4.777273473406472e-006,1.124373956594324e-006,2.499531734701936
-Posm=1.253036437246964
+Pos=5.084745762711865e-008,4.237288135593223,1.52542372881356e-007,1.685370829701083
+Posm=2.9625
 Font=Height=-15,FStyle=0,Color=#000080,Name=Arial
 Format=3
 
 [DC]
-Window Placement=2,3, 160,865, -4,-30, 154,203,1214,809
 Font=Height=-15,FStyle=0,Color=#0000FF,Name=Arial
 WinBackGround Color=#FFFFFF
 Select Color=#FF0000
@@ -741,13 +821,6 @@ Data Point Labels Color Fore=Height=-15,FStyle=0,Color=#000000,Name=Arial
 Data Point Labels Color Back=#FFFF00
 PrinterAutoTile=No
 PrinterBlackBorder=No
-MonMaxShow=3
-MonPageWidth=66
-MonPlotWidth=21
-MonExprXWidth=142
-MonExprYWidth=260
-MonRangeXWidth=90
-MonRangeYWidth=90
 AnimateWait=0
 AnimateWaitTime=500
 Save_For_Future=No
@@ -873,8 +946,9 @@ AliasID=1
 XExp=T
 YExp=v(VIN)
 XRng=TMAX,TMIN
-YRng=5.3
+YRng=7.5
 Options=LINEARX,LINEARY
+Range Grid Y=1.5
 Line Color=#009F00
 Text Color=#009F00
 Rainbow=False
@@ -894,8 +968,9 @@ AliasID=2
 XExp=T
 YExp=v(VOUT)
 XRng=TMAX,TMIN
-YRng=-1
+YRng=7.5
 Options=LINEARX,LINEARY
+Range Grid Y=1.5
 Line Color=#FF0000
 Text Color=#FF0000
 Rainbow=False
