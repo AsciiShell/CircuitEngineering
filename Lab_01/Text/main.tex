@@ -16,13 +16,14 @@
 %\tableofcontents
 \pagebreak
 \section{Исследование ключа на биполярном транзисторе}
+\subsection{Исследование ключа на биполярном транзисторе без нагрузки}
 
 В программе Micro-Cap была создана схема ключа на биполярном транзисторе с общим эмиттером (рис. \ref{fig:btsh}).
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\linewidth]{image/BT_sh}
-	\caption{Ключ на биполярном транзисторе с общим эмиттером}
+	\caption{Схема ключ на биполярном транзисторе с общим эмиттером без нагрузки}
 	\label{fig:btsh}
 \end{figure}
 
@@ -31,7 +32,7 @@
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\linewidth]{image/BT_graf_per}
-	\caption{График переходных процессов для БТ транзистора}
+	\caption{График переходных процессов для БТ транзистора без нагрузки}
 	\label{fig:btgrafper}
 \end{figure}
 
@@ -105,23 +106,111 @@ $$t^{01}_\phi = 145.242$$
 
 При $R_g = 1KOm$: $t^{01}_{zad} = 523.372ns$ и $t^{10}_{zad} = 21.963ns$
 
-
-
-
+\textbf{Вывод:} при уменьшении сопротивления цепи базы $t^{01}_{zad}$ возрастает с $235ns$ до $523ns$, при этом  $t^{10}_{zad}$ наоборот падает со $108ns$ до $22ns$ 
 
 
 Рассмотрим график анализа по постоянному току DC (рис. \ref{fig:btdc}), отметим на нем 2 точки и по их координатам посчитаем коэффициент передачи.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\linewidth]{image/BT_DC}
+	\includegraphics[width=0.4\linewidth]{image/BT_DC}
 	\caption{График анализа по постоянному току DC}
 	\label{fig:btdc}
 \end{figure}
 
-$$\dfrac{x-x_1}{x_2 - x_1} = \dfrac{y-y_1}{y_2 - y_1}$$
+Из формулы прямой $\dfrac{x-x_1}{x_2 - x_1} = \dfrac{y-y_1}{y_2 - y_1}$ получаем:
 
-$$\dfrac{x-729.429}{1054 - 729.429} = \dfrac{y-3.720}{1.584 - 3.720}$$
+%$$\dfrac{x-729.429}{1054 - 729.429} = \dfrac{y-3.720}{1.584 - 3.720}$$
+
+\begin{equation}
+y = x * \dfrac{y_2 - y_1}{x_2 - x_1} - x_1 * \dfrac{y_2 - y_1}{x_2 - x_1} + y_1
+\label{eq:line_bez_nagr}
+\end{equation}
+
+В формуле \ref{eq:line_bez_nagr} нас интересует коэффициент перед $x$, его абсолютное значение и будет коэффициентом $K$: 
+
+\begin{equation}
+K = \left|\dfrac{y_2 - y_1}{x_2 - x_1}\right|
+\label{eq:K_bez_nagr}
+\end{equation}
+
+Подставим координаты точек из рис. \ref{fig:btdc} в формулу \ref{eq:K_bez_nagr}:
+
+\begin{equation}
+K = \left|\dfrac{1.584 - 3.720}{1054 - 729.429} = \right|
+\label{eq:K_bez_nagr_p}
+\end{equation}
+
+TODO:!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+\subsection{Исследование ключа на биполярном транзисторе с нагрузкой}
+
+Для исследования влияния на динамические параметры и формирующие свойства ключа параметров нагрузки добавим к схеме ключа на биполярном транзисторе нагрузку рис. \ref{fig:btshnagr}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{image/BT_sh_nagr}
+	\caption{Схема ключ на биполярном транзисторе с общим эмиттером с нагрузкой}
+	\label{fig:btshnagr}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{image/BT_graf_nagr}
+	\caption{График передаточной характеристики для ключа на биполярном транзисторе с нагрузкой}
+	\label{fig:btgrafnagr}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.4\linewidth]{image/BT_graf_nagr_fr}
+	\caption{Измерение фронтов $t^{01}_{\phi}$ и $t^{10}_{\phi}$}
+	\label{fig:btgrafnagrfr}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.4\linewidth]{image/BT_graf_nagr_zad}
+	\caption{Измерение задержки переключения $t^{01}_{zad}$ и $t^{10}_{zad}$}
+	\label{fig:btgrafnagrzad}
+\end{figure}
+
+
+На рисунках \ref{fig:btgrafnagrfr} и \ref{fig:btgrafnagrzad} представлены измерения фронтов и времени переключения соответственно для ключа на биполярном транзисторе с нагрузкой. 
+
+Получаем следующие значения:
+
+$t^{01}_{\phi} = 211.525ns$
+
+$t^{10}_{\phi} = 278.644ns$
+
+$t^{01}_{zad} = 119.898ns$
+
+$t^{10}_{zad} = 170.847ns$
+
+\begin{table}[H]
+	\caption{Сравнение динамических характеристик ключа на биполярном транзисторе с нагрузкой и без}
+	\centering
+	\begin{tabular}{|l|c|c|c|c|}
+		\hline
+		& $t^{01}_{\phi}, ns$ & $t^{10}_{\phi}, ns$ & $t^{01}_{zad}, ns$ & $t^{10}_{zad}, ns$ \\ \hline
+		без нагрузки & 227 & 145 & 235 & 107 \\ \hline
+		с нагрузкой & 211 & 278 & 119 & 170 \\ \hline
+	\end{tabular}
+
+\label{tab:sr_har}
+\end{table}
+
+
+\textbf{Вывод: } появление нагрузки уменьшает динамические характеристики при включении ($t^{01}_{\phi}$ и $t^{01}_{zad}$) и увеличивает при выключении ($t^{10}_{\phi}$ и $t^{10}_{zad}$) ключа.
+
+
+
+\section{Исследование ключа на КМДП транзисторе}
+\subsection{Исследование ключа на КМДП транзисторе без нагрузки}
+
+\subsection{Исследование ключа на КМДП транзисторе с нагрузкой}
+
 
 
  \end{document} % конец документа
