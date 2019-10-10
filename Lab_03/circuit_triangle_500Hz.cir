@@ -696,7 +696,7 @@ Scale 0=1
 Scale 1=1
 Scale 2=1
 Scale 3=0.5
-Grid=13,10
+Grid=30,22
 
 [Page]
 Index=1
@@ -901,6 +901,21 @@ Name="Main"
 
 [AObject]
 Analysis=Transient
+Object=MeasureV
+Locked=True
+EndPoint=ArrowF
+CBorder=#000080
+w=1
+AliasID1=2
+w2=1
+AliasID2=2
+Pos=0.001499499999999958,-0.6201232827376728,0.002500500000000066,0.6317292496007224
+Posm=0.002001361470388019
+Font=Height=-15,FStyle=0,Color=#000080,Name=Arial
+Format=3
+
+[AObject]
+Analysis=Transient
 Object=MeasureH
 Locked=True
 EndPoint=ArrowF
@@ -1095,8 +1110,8 @@ Seed=0
 
 [Limits]
 Analysis=Transient
-TRange=1
-TStep=0
+TRange=0.02
+TStep=1u
 NPts=51
 Temp=27
 RetraceRuns=1

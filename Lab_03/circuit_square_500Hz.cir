@@ -207,7 +207,7 @@ Digital F Color=#FFFF00
 Digital 1 Color=#FF0000
 Digital X Color=#C0C0C0
 Digital Z Color=#808080
-Window Placement in Transient Analysis=2,3, 0,695, -8,-31, 182,437,1484,932
+Window Placement in Transient Analysis=2,3, 0,695, -8,-31, 182,234,1484,729
 Window Placement in AC Analysis=2,3, -1,-1, -8,-31, 156,156,1458,651
 SpiceType=AMBIGUOUS
 Block Select Color=#51F998
@@ -530,7 +530,7 @@ Style=8192
 ONV=15,-37,VALUE,DC 0 AC 1 0 Pulse -2.5 2.5 0 0.2m 0.2m 0.0008 2m
 
 [Attr]
-ONV=0,0,Saved_None,DC 12 AC 1 0 
+ONV=0,0,Saved_None,DC 12 AC 1 0
 Style=256
 
 [Attr]
@@ -674,7 +674,7 @@ FONT=Yes
 
 [Section]
 Index=0
-Name="circuit"
+Name="circuit_square_500Hz"
 Type=Main
 Enable=True
 CurrentPage 0=0
@@ -696,7 +696,7 @@ Scale 0=1
 Scale 1=1
 Scale 2=1
 Scale 3=0.5
-Grid=7,19
+Grid=32,20
 
 [Page]
 Index=1
@@ -753,7 +753,7 @@ Len=0
 
 
 [Transient]
-Window Placement=2,3, 0,695, -8,-31, 182,437,1484,932
+Window Placement=2,3, 0,695, -8,-31, 182,234,1484,729
 Font=Height=-15,FStyle=0,Color=#0000FF,Name=Arial
 WinBackGround Color=#FFFFFF
 Select Color=#FF0000
@@ -898,6 +898,21 @@ SELNEXT=No
 [APage]
 Analysis=Transient
 Name="Main"
+
+[AObject]
+Analysis=Transient
+Object=MeasureV
+Locked=True
+EndPoint=ArrowF
+CBorder=#000080
+w=1
+AliasID1=2
+w2=1
+AliasID2=2
+Pos=0.001099499999999992,-2.120791058986164,0.002100500000000013,0.1310052715904789
+Posm=0.001599727705922396
+Font=Height=-15,FStyle=0,Color=#000080,Name=Arial
+Format=3
 
 [AObject]
 Analysis=Transient
@@ -1095,8 +1110,8 @@ Seed=0
 
 [Limits]
 Analysis=Transient
-TRange=4e-3
-TStep=0
+TRange=0.02
+TStep=1u
 NPts=51
 Temp=27
 RetraceRuns=1
