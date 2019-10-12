@@ -17,7 +17,7 @@
 \pagebreak
 \section{Инвертирующий интегратор}
 
-В программе Micro-Cap была создана схема инвертирующего (рис. \ref{fig:schema_int_base}), а так же интегратора с шунтирующим сопротивлением (рис. \ref{fig:schema_int}).
+В программе Micro-Cap была создана схема интегратора (рис. \ref{fig:schema_int_base}), а так же инвертирующего с шунтирующим сопротивлением (рис. \ref{fig:schema_int}).
 
 \begin{figure}[H]
 	\centering
@@ -120,6 +120,104 @@
 
 Наклон ФЧХ: $-19.811$
 
+\section{Инвертирующий дифференциатор}
+
+В программе Micro-Cap была создана схема инвертирующего дифференциатора с увеличенной устойчивостью к возбуждению(рис. \ref{fig:schema_diff}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{../imgs/schema_diff}
+	\caption{Схема инвертирующего дифференциатора}
+	\label{fig:schema_diff}
+\end{figure}
+
+\subsection{Исследование выходных сигналов на различных частотах}
+
+\subsubsection{Гармонический сигнал}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{../imgs/tran_sin_10Hz_diff}
+	\caption{Осциллограмма для гармонического сигнала при частоте 10 Гц}
+	\label{fig:tran_sin_10Hz_diff}
+\end{figure}
+
+Амплитуда выходного сигнала $0.125V$ (рис. \ref{fig:tran_sin_10Hz_diff})
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{../imgs/tran_sin_500Hz_diff}
+	\caption{Осциллограмма для гармонического сигнала при частоте 500 Гц}
+	\label{fig:tran_sin_500Hz_diff}
+\end{figure}
+
+Амплитуда выходного сигнала $6.29V$ (рис. \ref{fig:tran_sin_500Hz_diff})
+
+\subsubsection{Квадратичный сигнал}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{../imgs/tran_square_10Hz_diff}
+	\caption{Осциллограмма для квадратичного сигнала при частоте 10 Гц}
+	\label{fig:tran_square_10Hz_diff}
+\end{figure}
+
+Амплитуда выходного сигнала $1.50V$ (рис. \ref{fig:tran_square_10Hz_diff})
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{../imgs/tran_square_500Hz_diff}
+	\caption{Осциллограмма для квадратичного сигнала при частоте 500 Гц, $С_2=1nF R_1 = 1kOhm$}
+	\label{fig:tran_square_500Hz_diff}
+\end{figure}
+
+Амплитуда выходного сигнала $7.77V$ (рис. \ref{fig:tran_square_500Hz_diff})
+
+\subsubsection{Треугольный сигнал}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{../imgs/tran_triangle_10Hz_diff}
+	\caption{Осциллограмма для треугольного сигнала при частоте 10 Гц, $R_1 = 100kOhm$}
+	\label{fig:tran_triangle_10Hz_diff}
+\end{figure}
+
+Амплитуда выходного сигнала $2.52V$ (рис. \ref{fig:tran_triangle_10Hz_diff})
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{../imgs/tran_triangle_500Hz_diff}
+	\caption{Осциллограмма для треугольного сигнала при частоте 500 Гц, $R_1 = 1kOhm$}
+	\label{fig:tran_triangle_500Hz_diff}
+\end{figure}
+
+Амплитуда выходного сигнала $27.2V$ (рис. \ref{fig:tran_triangle_500Hz_diff})
+
+\subsection{Исследование АЧХ и ФЧХ дифференциатора}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{../imgs/diff_fr}
+	\caption{АЧХ дифференциатора}
+	\label{fig:diff_fr}
+\end{figure}
+
+Частота среза: $7830Hz$
+
+Полоса пропускания: $7.83kHz - 100kHz$
+
+Ширина полосы пропускания: $92.17kHz$
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{../imgs/diff_pr}
+	\caption{ФЧХ дифференциатора}
+	\label{fig:diff_pr}
+\end{figure}
+
+Максимальный фазовый сдвиг: $93.9^{\circ}$
+
+Наклон ФЧХ: $-0.945$
 
 \end{document} % конец документа
 
