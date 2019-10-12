@@ -1,0 +1,17 @@
+********************************************************************************
+***                            MC-9 GUAP Edition                             ***
+***                                                                          ***
+***                                                                          ***
+***          Анализ переходных процессов Transient analysis of SHIM          ***
+********************************************************************************
+Limits
+======
+Time Range           7m
+Maximum Time Step    10u
+Number of Points     51
+Temperature          Linear 27
+Run Options          Normal
+State Variables      Zero
+Operating Point      Off
+Operating Point Only Off
+
