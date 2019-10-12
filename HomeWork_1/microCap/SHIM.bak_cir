@@ -379,14 +379,14 @@ ONV=-28,-27,PART,V3
 Style=8192
 
 [Attr]
-ONV=19,-37,VALUE,DC 9 AC 1 0
+ONV=19,-37,VALUE,DC 9 AC 1 0 
 
 [Attr]
 ONV=0,0,Saved_Pulse,DC 0 AC 1 0 Pulse 0 5 100n 10n 10n 400n 1u
 Style=256
 
 [Attr]
-ONV=0,0,Saved_None,DC 9 AC 1 0
+ONV=0,0,Saved_None,DC 9 AC 1 0 
 Style=256
 
 [Comp]
@@ -399,7 +399,7 @@ ONV=19,-25,PART,V4
 Style=8192
 
 [Attr]
-ONV=19,-37,VALUE,DC 0 AC 1 0 PWL 0,-3 6m,10
+ONV=19,-37,VALUE,DC 0 AC 5 0 Sin 0 5 0.5k 0 0 0
 
 [Attr]
 ONV=0,0,Saved_None,DC 0 AC 1 0
@@ -418,7 +418,7 @@ ONV=0,33,Saved_Exp,DC 0 AC 1 0 Exp 0 1 100n 100n 500n 100n
 Style=256
 
 [Attr]
-ONV=0,44,Saved_PWL,DC 0 AC 1 0 PWL 0,-3 6m,10
+ONV=0,44,Saved_PWL,DC 0 AC 1 0 PWL 0,1 100n,2 400n,3 500n,4 600n,1 700n,2 1u,0þ
 Style=256
 
 [Attr]
@@ -487,7 +487,7 @@ CurrentSection 3=0
 Splitter.xs=0
 Splitter.ys=0
 TextQuad=4099
-Scale=0.5
+Scale=0.6666666666666666
 PrinterScale=1
 GridUser=10
 ShapeGroups="Main","Euro","DeMorgan","Electrolytic","Polarity"
@@ -589,7 +589,7 @@ Scale 1=1
 Scale 2=1
 SB 3=0,62
 Scale 3=0.6666666666666666
-Grid=13,40
+Grid=12,30
 
 [Page]
 Index=1
@@ -1105,7 +1105,7 @@ Seed=0
 
 [Limits]
 Analysis=Transient
-TRange=6m
+TRange=10m
 TStep=10u
 NPts=51
 Temp=27
