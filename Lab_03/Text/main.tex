@@ -1,0 +1,130 @@
+%!TEX TS-program = xelatex
+
+% Шаблон документа LaTeX создан в 2018 году
+% Алексеем Подчезерцевым
+% В качестве исходных использованы шаблоны
+% 	Данилом Фёдоровых (danil@fedorovykh.ru) 
+%		https://www.writelatex.com/coursera/latex/5.2.2
+%	LaTeX-шаблон для русской кандидатской диссертации и её автореферата.
+%		https://github.com/AndreyAkinshin/Russian-Phd-LaTeX-Dissertation-Template
+
+\documentclass[a4paper,14pt]{article}
+
+\input{data/preambular.tex}
+\begin{document} % конец преамбулы, начало документа
+\input{data/title.tex}
+%\tableofcontents
+\pagebreak
+\section{Инвертирующий интегратор}
+
+В программе Micro-Cap была создана схема инвертирующего (рис. \ref{fig:schema_int_base}), а так же интегратора с шунтирующим сопротивлением (рис. \ref{fig:schema_int}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{../imgs/schema_int_base}
+	\caption{Схема инвертирующего интегратора}
+	\label{fig:schema_int_base}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{../imgs/schema_int}
+	\caption{Схема инвертирующего интегратора с шунтирующим сопротивлением}
+	\label{fig:schema_int}
+\end{figure}
+
+\subsection{Исследование выходных сигналов на различных частотах}
+
+\subsubsection{Гармонический сигнал}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{../imgs/tran_sin_10Hz}
+	\caption{Осциллограмма для гармонического сигнала при частоте 10 Гц}
+	\label{fig:tran_sin_10Hz}
+\end{figure}
+
+Амплитуда выходного сигнала $27.2V$ (рис. \ref{fig:tran_sin_10Hz})
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{../imgs/tran_sin_500Hz}
+	\caption{Осциллограмма для гармонического сигнала при частоте 500 Гц}
+	\label{fig:tran_sin_500Hz}
+\end{figure}
+
+Амплитуда выходного сигнала $0.639V$ (рис. \ref{fig:tran_sin_500Hz})
+
+\subsubsection{Квадратичный сигнал}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{../imgs/tran_square_10Hz}
+	\caption{Осциллограмма для квадратичного сигнала при частоте 10 Гц}
+	\label{fig:tran_square_10Hz}
+\end{figure}
+
+Амплитуда выходного сигнала $27.2V$ (рис. \ref{fig:tran_square_10Hz})
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{../imgs/tran_square_500Hz}
+	\caption{Осциллограмма для квадратичного сигнала при частоте 500 Гц}
+	\label{fig:tran_square_500Hz}
+\end{figure}
+
+Амплитуда выходного сигнала $2.25V$ (рис. \ref{fig:tran_square_500Hz})
+
+\subsubsection{Треугольный сигнал}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{../imgs/tran_triangle_10Hz}
+	\caption{Осциллограмма для треугольного сигнала при частоте 10 Гц}
+	\label{fig:tran_triangle_10Hz}
+\end{figure}
+
+Амплитуда выходного сигнала $27.5V$ (рис. \ref{fig:tran_triangle_10Hz})
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{../imgs/tran_triangle_500Hz}
+	\caption{Осциллограмма для треугольного сигнала при частоте 500 Гц}
+	\label{fig:tran_triangle_500Hz}
+\end{figure}
+
+Амплитуда выходного сигнала $1.25V$ (рис. \ref{fig:tran_triangle_500Hz})
+
+\subsection{Исследование АЧХ и ФЧХ интегратора}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{../imgs/int_fr}
+	\caption{АЧХ интегратора}
+	\label{fig:int_fr}
+\end{figure}
+
+
+Частота среза: $10.6Hz$
+
+Полоса пропускания: $1Hz - 10.6Hz$
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{../imgs/int_pr}
+	\caption{ФЧХ интегратора}
+	\label{fig:int_pr}
+\end{figure}
+
+Максимальный фазовый сдвиг: $173.5^{\circ}$
+
+Наклон ФЧХ: $-19.811$
+
+
+\end{document} % конец документа
+
+
+
+
+
+
