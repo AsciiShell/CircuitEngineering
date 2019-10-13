@@ -1,0 +1,116 @@
+%!TEX TS-program = xelatex
+
+% Шаблон документа LaTeX создан в 2018 году
+% Алексеем Подчезерцевым
+% В качестве исходных использованы шаблоны
+% 	Данилом Фёдоровых (danil@fedorovykh.ru) 
+%		https://www.writelatex.com/coursera/latex/5.2.2
+%	LaTeX-шаблон для русской кандидатской диссертации и её автореферата.
+%		https://github.com/AndreyAkinshin/Russian-Phd-LaTeX-Dissertation-Template
+
+\documentclass[a4paper,14pt]{article}
+
+\input{data/preambular.tex}
+\begin{document} % конец преамбулы, начало документа
+\input{data/title.tex}
+%\tableofcontents
+\pagebreak
+\section{Исходные и рассчитанные параметры}
+
+Выбор и подсчет исходных значений:
+\begin{itemize}
+
+\item Тип фильтра: Баттерворта ($\alpha = 1.414; \varepsilon = 1.000$)
+
+\item $f_{cp} = 2kHz$
+
+\item Выбор R
+
+$R_1 = R_2 = R_a = R = 10 k\Omega$
+
+\item Определение C
+
+$f_{cp} = \dfrac{1}{2\pi RC}$
+
+$C = \dfrac{1}{2\pi Rf_{cp}} = \dfrac{1}{2\pi * 10k\Omega * 2kHz}$
+
+$C_1 = C_2 = C = 7.958 nF$
+
+\item $R_b = (2-\alpha)R_a = (2 - 1.414)10k\Omega = 5860 \Omega$
+
+\item $Ku_{teor} = \dfrac{U_{out}}{U_{in}} = \dfrac{I_{OC}(R_b + R_a)}{I_{OC}R_a} = \dfrac{R_b}{R_a} + 1 = \dfrac{(2 - \alpha) R_a}{R_a} + 1 = 3 - \alpha = 1.586$
+\end{itemize}
+
+\section{Фильтр низких частот}
+
+\subsection{Построение схемы}
+
+Схема фильра нижних частот представлена на рис. \ref{fig:shfnch}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\linewidth]{../imgs/FNCH/sh_fnch}
+	\caption{Схема фильтра низких частот}
+	\label{fig:shfnch}
+\end{figure}
+
+\subsection{Получение АЧХ и ФЧХ}
+
+Построим графики АЧХ и ФЧХ (рис. \ref{fig:afchn}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\linewidth]{../imgs/FNCH/AFcH_N}
+	\caption{АЧХ и ФЧХ с измерением частота среза}
+	\label{fig:afchn}
+\end{figure}
+
+Фактическая частота среза получилась $1.999kHz \approx 2kHz$.
+
+Полоса пропускания находится в интервале $(0;2)kHz$.
+
+\subsection{Получение динамических характеристик}
+
+Построим график динамической характеристики для частот $500Hz$ (рис. \ref{fig:garm500n}) и $50kHz$ (рис. \ref{fig:garm50kn}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.95\linewidth]{../imgs/FNCH/garm_500_N}
+	\caption{Динамическая характеристика ФНЧ для частоты $500Hz$}
+	\label{fig:garm500n}
+\end{figure}
+
+Размах напряжения входного сигнала $2V$
+
+Размах напряжения выходного сигнала $3.13V$
+
+Рассчитаем фактический коэффициент усиления:
+
+$Ku_{fact} = \dfrac{3.13V}{2V} = 1.565$
+
+$Ku_{teor} = 1.586$
+
+$Ku_{teor} \approx Ku_{fact}$
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.95\linewidth]{../imgs/FNCH/garm_50k_N}
+	\caption{Динамическая характеристика ФНЧ для частоты $50kHz$}
+	\label{fig:garm50kn}
+\end{figure}
+
+Напряжение на повторяющихся локальных максимумах $U_{out} \approx 5.5mV$
+
+$Ku = \dfrac{5.5mV}{1V} = 0.0055$
+
+Выходное напряжение пренебрежимо мало по отношению ко входному, из этого можно сделать вывод, что сигнал данной частоты не пропускается через данный фильтр.
+
+
+
+\end{document} % конец документа
+
+
+
+
+
+
