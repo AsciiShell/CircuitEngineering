@@ -45,7 +45,7 @@ $C_1 = C_2 = C = 7.958 nF$
 
 \subsection{Построение схемы}
 
-Схема фильра нижних частот представлена на рис. \ref{fig:shfnch}.
+Схема фильтра нижних частот представлена на рис. \ref{fig:shfnch}.
 
 \begin{figure}[H]
 	\centering
@@ -61,7 +61,7 @@ $C_1 = C_2 = C = 7.958 nF$
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.85\linewidth]{../imgs/FNCH/AFcH_N}
-	\caption{АЧХ и ФЧХ с измерением частота среза}
+	\caption{АЧХ и ФЧХ с измерением частоты среза}
 	\label{fig:afchn}
 \end{figure}
 
@@ -104,6 +104,86 @@ $Ku_{teor} \approx Ku_{fact}$
 $Ku = \dfrac{5.5mV}{1V} = 0.0055$
 
 Выходное напряжение пренебрежимо мало по отношению ко входному, из этого можно сделать вывод, что сигнал данной частоты не пропускается через данный фильтр.
+
+\subsection{погрешности}
+
+
+
+
+\section{Фильтр низких частот}
+
+\subsection{Построение схемы}
+
+Схема фильтра высоких частот представлена на рис. \ref{fig:shfvch}.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\linewidth]{../imgs/FVCH/sh_fvch}
+	\caption{Схема фильтра высоких частот}
+	\label{fig:shfvch}
+\end{figure}
+
+
+\subsection{Получение АЧХ и ФЧХ}
+
+Построим графики АЧХ и ФЧХ (рис. \ref{fig:afchv1}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\linewidth]{../imgs/FVCH/AFcH_V1}
+	\caption{АЧХ и ФЧХ с измерением частоты среза}
+	\label{fig:afchv1}
+\end{figure}
+
+
+Фактическая частота среза получилась $1.998kHz \approx 2kHz$.
+
+Полоса пропускания находится в интервале $(2kHz; 2.148MHz)$.
+
+
+\subsection{Получение динамических характеристик}
+
+Построим график динамической характеристики для частот $50Hz$ (рис. \ref{fig:garm50v}) и $50kHz$ (рис. \ref{fig:garm50kv}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.95\linewidth]{../imgs/FVCH/garm_50_V}
+	\caption{Динамическая характеристика ФВЧ для частоты $50Hz$}
+	\label{fig:garm50v}
+\end{figure}
+
+
+Напряжение на повторяющихся локальных максимумах $U_{out} \approx 4mV$
+
+$Ku = \dfrac{4mV}{1V} = 0.004$
+
+Выходное напряжение пренебрежимо мало по отношению ко входному, из этого можно сделать вывод, что сигнал данной частоты не пропускается через данный фильтр.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.95\linewidth]{../imgs/FVCH/garm_50k_V}
+	\caption{Динамическая характеристика ФВЧ для частоты $50kHz$}
+	\label{fig:garm50kv}
+\end{figure}
+
+Размах напряжения входного сигнала $2V$
+
+Размах напряжения выходного сигнала $3.172V$
+
+Рассчитаем фактический коэффициент усиления:
+
+$Ku_{fact} = \dfrac{3.172V}{2V} = 1.586$
+
+$Ku_{teor} = 1.586$
+
+$Ku_{teor} = Ku_{fact}$
+
+
+\subsection{погрешности}
+
+
 
 
 
