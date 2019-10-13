@@ -22,3 +22,11 @@
 *.plt
 
 *.synctex(busy)
+
+*.ANO
+
+*.bak_cir
+
+*.TNO
+
+**/~$*.docx
