@@ -189,7 +189,7 @@ Digital 1 Color=#FF0000
 Digital X Color=#C0C0C0
 Digital Z Color=#808080
 Window Placement in Transient Analysis=2,3, -1,-1, -8,-31, 78,78,1253,506
-Window Placement in AC Analysis=2,3, -1,-1, -8,-31, 0,0,1175,428
+Window Placement in AC Analysis=2,3, 0,571, -8,-31, 0,0,674,428
 SpiceType=AMBIGUOUS
 Block Select Color=#51F998
 TitleBlock Field_1=$name
@@ -362,14 +362,14 @@ ONV=15,-25,PART,V8
 Style=8192
 
 [Attr]
-ONV=15,-37,VALUE,DC 0 AC 1 0 Sin 0 1 50 0 0 0
+ONV=15,-37,VALUE,DC 0 AC 1 0 Sin 0 1 50k 0 0 0
 
 [Attr]
 ONV=0,0,Saved_None,DC 12 AC 1 0
 Style=256
 
 [Attr]
-ONV=0,0,Saved_Sin,DC 0 AC 1 0 Sin 0 1 50 0 0 0
+ONV=0,0,Saved_Sin,DC 0 AC 1 0 Sin 0 1 50k 0 0 0
 Style=256
 
 [Attr]
@@ -398,8 +398,8 @@ Grids=29,29,32,29
 
 [Comp]
 Name=Resistor
-Grid=29,29
-Rot=6
+Grid=32,29
+Rot=7
 
 [Attr]
 ONV=-32,6,PART,R2
@@ -411,7 +411,7 @@ Style=8192
 
 [Comp]
 Name=Resistor
-Grid=20,29
+Grid=29,39
 Rot=6
 
 [Attr]
@@ -424,7 +424,7 @@ Style=8192
 
 [Comp]
 Name=Capacitor
-Grid=23,39
+Grid=14,29
 Rot=4
 
 [Attr]
@@ -432,7 +432,7 @@ ONV=16,-24,PART,C1
 Style=8192
 
 [Attr]
-ONV=16,-36,CAPACITANCE,7.958n
+ONV=16,-36,CAPACITANCE,8.7538n
 Style=8192
 
 [Wire]
@@ -458,19 +458,16 @@ Grids=49,26,49,39
 
 [Comp]
 Name=Capacitor
-Grid=32,35
-Rot=5
+Grid=29,29
+Rot=6
 
 [Attr]
 ONV=12,-24,PART,C2
 Style=8192
 
 [Attr]
-ONV=12,-36,CAPACITANCE,7.958n
+ONV=12,-36,CAPACITANCE,8.7538n
 Style=8192
-
-[Wire]
-Grids=32,29,36,29
 
 [Comp]
 Name=Ground
@@ -532,6 +529,9 @@ Grids=49,14,49,26
 [Wire]
 Grids=11,29,14,29
 
+[Wire]
+Grids=32,29,36,29
+
 [Grid Text]
 Text="vin"
 Grid=11,29
@@ -550,7 +550,7 @@ CurrentSection 3=0
 Splitter.xs=0
 Splitter.ys=0
 TextQuad=4099
-Scale=0.6666666666666666
+Scale=1
 PrinterScale=1
 GridUser=10
 ShapeGroups="Main","DeMorgan","Euro","Polarity","Electrolytic"
@@ -629,7 +629,7 @@ FONT=Yes
 
 [Section]
 Index=0
-Name="FNCH"
+Name="FVCH_C"
 Type=Main
 Enable=True
 CurrentPage 0=0
@@ -650,9 +650,9 @@ Name=Main
 Scale 0=1
 Scale 1=1
 Scale 2=1
-SB 3=0,48
+SB 3=0,41
 Scale 3=0.6666666666666666
-Grid=7,34
+Grid=62,27
 
 [Page]
 Index=1
@@ -865,8 +865,8 @@ w=0
 AliasID1=1
 w2=0
 AliasID2=1
-Pos=0.04500342967442476,0.999999419535723,0.0350034296744217,-0.999999419535724
-Posm=0.0565015479876161
+Pos=4.500280000000462e-005,0.9999996131115312,3.500280000000302e-005,-0.9999996131115316
+Posm=4.318885448916408e-005
 Font=Height=-15,FStyle=0,Color=#000080,Name=Arial
 Format=3
 
@@ -880,13 +880,13 @@ w=1
 AliasID1=2
 w2=1
 AliasID2=2
-Pos=0.0651134296744291,1.589041581262547,0.07511342967442522,-1.582905120858405
-Posm=0.06609907120743035
+Pos=6.492280000000517e-005,1.545531303057081,5.49128000000062e-005,-1.626073122877186
+Posm=5.479876160990711e-005
 Font=Height=-15,FStyle=0,Color=#000080,Name=Arial
 Format=3
 
 [AC]
-Window Placement=2,3, -1,-1, -8,-31, 0,0,1175,428
+Window Placement=2,3, 0,571, -8,-31, 0,0,674,428
 Font=Height=-15,FStyle=0,Color=#0000FF,Name=Arial
 WinBackGround Color=#FFFFFF
 Select Color=#FF0000
@@ -1035,21 +1035,6 @@ Name="Main"
 
 [AObject]
 Analysis=AC
-Object=MeasureH
-Locked=True
-EndPoint=ArrowF
-CBorder=#000080
-w=0
-AliasID1=1
-w2=0
-AliasID2=1
-Pos=10.14495208068737,4.005907937683664,1997.697771564771,1.006411198266104
-Posm=-20.21276595744681
-Font=Height=-15,FStyle=0,Color=#000080,Name=Arial
-Format=3
-
-[AObject]
-Analysis=AC
 Object=MeasureV
 Locked=True
 EndPoint=ArrowF
@@ -1058,8 +1043,8 @@ w=0
 AliasID1=1
 w2=0
 AliasID2=1
-Pos=10.14495208068737,4.005907937683664,1997.697771564771,1.006411198266104
-Posm=10823.68139697193
+Pos=22410.64510325633,3.989637753013223,1816.711780828442,0.9900000000000069
+Posm=12116.83384498144
 Font=Height=-15,FStyle=0,Color=#000080,Name=Arial
 Format=3
 
@@ -1081,8 +1066,8 @@ Seed=0
 
 [Limits]
 Analysis=Transient
-TRange=0.2
-TStep=10u
+TRange=200u
+TStep=10n
 NPts=51
 Temp=27
 RetraceRuns=1
@@ -1153,7 +1138,7 @@ SFmtY=3
 
 [Limits]
 Analysis=AC
-FRange=100k, 0.000001
+FRange=50k,100
 NPts=1000
 Temp=27
 MaxChng=5
@@ -1171,11 +1156,11 @@ Plt=1
 AliasID=1
 XExp=F
 YExp=db(v(VOUT)/v(VIN))
-XRng=100000,1e-6
-YRng=50,-75
+XRng=50000,100
+YRng=32,-48
 Options=LINEARY
-Range Grid X=20000
-Range Grid Y=25
+Range Grid X=9980
+Range Grid Y=16
 Line Color=#0000FF
 Text Color=#0000FF
 Rainbow=False
@@ -1194,11 +1179,11 @@ Plt=2
 AliasID=2
 XExp=F
 YExp=ph(v(VOUT)/v(VIN))
-XRng=100000,1e-6
-YRng=60,-240
+XRng=50000,100
+YRng=250
 Options=LINEARY
-Range Grid X=20000
-Range Grid Y=60
+Range Grid X=9980
+Range Grid Y=50
 Line Color=#FF0000
 Text Color=#FF0000
 Rainbow=False
