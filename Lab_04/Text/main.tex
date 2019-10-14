@@ -1,0 +1,299 @@
+%!TEX TS-program = xelatex
+
+% Шаблон документа LaTeX создан в 2018 году
+% Алексеем Подчезерцевым
+% В качестве исходных использованы шаблоны
+% 	Данилом Фёдоровых (danil@fedorovykh.ru) 
+%		https://www.writelatex.com/coursera/latex/5.2.2
+%	LaTeX-шаблон для русской кандидатской диссертации и её автореферата.
+%		https://github.com/AndreyAkinshin/Russian-Phd-LaTeX-Dissertation-Template
+
+\documentclass[a4paper,14pt]{article}
+
+\input{data/preambular.tex}
+\begin{document} % конец преамбулы, начало документа
+\input{data/title.tex}
+%\tableofcontents
+\pagebreak
+\section{Исходные и рассчитанные параметры}
+
+Выбор и подсчет исходных значений:
+\begin{itemize}
+
+\item Тип фильтра: Баттерворта ($\alpha = 1.414; \varepsilon = 1.000$)
+
+\item $f_{cp} = 2kHz$
+
+\item Выбор R
+
+$R_1 = R_2 = R_a = R = 10 k\Omega$
+
+\item Определение C
+
+$f_{cp} = \dfrac{1}{2\pi RC}$
+
+$C = \dfrac{1}{2\pi Rf_{cp}} = \dfrac{1}{2\pi * 10k\Omega * 2kHz}$
+
+$C_1 = C_2 = C = 7.958 nF$
+
+\item $R_b = (2-\alpha)R_a = (2 - 1.414)10k\Omega = 5860 \Omega$
+
+\item $Ku_{teor} = \dfrac{U_{out}}{U_{in}} = \dfrac{I_{OC}(R_b + R_a)}{I_{OC}R_a} = \dfrac{R_b}{R_a} + 1 = \dfrac{(2 - \alpha) R_a}{R_a} + 1 = 3 - \alpha = 1.586$
+\end{itemize}
+
+\section{Фильтр низких частот}
+
+\subsection{Построение схемы}
+
+Схема фильтра нижних частот представлена на рис. \ref{fig:shfnch}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\linewidth]{../imgs/FNCH/sh_fnch}
+	\caption{Схема фильтра низких частот}
+	\label{fig:shfnch}
+\end{figure}
+
+\subsection{Получение АЧХ и ФЧХ}
+
+Построим графики АЧХ и ФЧХ (рис. \ref{fig:afchn}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\linewidth]{../imgs/FNCH/AFcH_N}
+	\caption{АЧХ и ФЧХ с измерением частоты среза}
+	\label{fig:afchn}
+\end{figure}
+
+Фактическая частота среза получилась $1.999kHz \approx 2kHz$.
+
+Полоса пропускания находится в интервале $(0;2)kHz$.
+
+\subsection{Получение динамических характеристик}
+
+Построим график динамической характеристики для частот $500Hz$ (рис. \ref{fig:garm500n}) и $50kHz$ (рис. \ref{fig:garm50kn}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.95\linewidth]{../imgs/FNCH/garm_500_N}
+	\caption{Динамическая характеристика ФНЧ для частоты $500Hz$}
+	\label{fig:garm500n}
+\end{figure}
+
+Размах напряжения входного сигнала $2V$
+
+Размах напряжения выходного сигнала $3.172V$
+
+Рассчитаем фактический коэффициент усиления:
+
+$Ku_{fact} = \dfrac{3.172V}{2V} = 1.586$
+
+$Ku_{teor} = 1.586$
+
+$Ku_{teor} = Ku_{fact}$
+
+Коэффициент передачи 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.95\linewidth]{../imgs/FNCH/garm_50k_N}
+	\caption{Динамическая характеристика ФНЧ для частоты $50kHz$}
+	\label{fig:garm50kn}
+\end{figure}
+
+Напряжение на повторяющихся локальных максимумах $U_{out} \approx 5.5mV$
+
+$Ku = \dfrac{5.5mV}{1V} = 0.0055$
+
+Выходное напряжение пренебрежимо мало по отношению ко входному, из этого можно сделать вывод, что сигнал данной частоты не пропускается через данный фильтр.
+
+\subsection{Исследование влияния погрешностей}
+
+Найдем зависимость между частотой среза и погрешностью сопротивления (рис. \ref{fig:pogrrn}). 
+
+$R_{pogr} = 0.9R$
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\linewidth]{../imgs/FNCH/pogr_R_N}
+	\caption{АЧХ и ФЧХ для ФНЧ с уменьшенным сопротивлением}
+	\label{fig:pogrrn}
+\end{figure}
+
+В данном случае частота среза стала больше, и составляет $2.22KHz$.
+
+Найдем зависимость между частотой среза и погрешностью емкости (рис. \ref{fig:pogrcn}). 
+
+$C_{pogr} = 0.9C$
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\linewidth]{../imgs/FNCH/pogr_C_N}
+	\caption{АЧХ и ФЧХ для ФНЧ с уменьшенной емкостью}
+	\label{fig:pogrcn}
+\end{figure}
+
+В данном случае частота среза стала больше, и также составляет $2.22KHz$.
+
+Из проделанных опытов можно сделать вывод, что уменьшение сопротивления или емкости увеличивает частоту среза.
+
+Действительно, частота среза обратно зависит $R$ и $C$ и находится по формуле:
+
+$f_{cp} = \dfrac{1}{2\pi RC}$
+
+Можно заметить, что при изменении $R$ и $C$ в одно и то же число раз, получена одна и та же частота среза.
+Это можно также объяснить формулой, по которой находится частота среза.
+
+\section{Фильтр высоких частот}
+
+\subsection{Построение схемы}
+
+Схема фильтра высоких частот представлена на рис. \ref{fig:shfvch}.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\linewidth]{../imgs/FVCH/sh_fvch}
+	\caption{Схема фильтра высоких частот}
+	\label{fig:shfvch}
+\end{figure}
+
+
+\subsection{Получение АЧХ и ФЧХ}
+
+Построим графики АЧХ и ФЧХ (рис. \ref{fig:afchv1}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\linewidth]{../imgs/FVCH/AFcH_V1}
+	\caption{АЧХ и ФЧХ с измерением частоты среза}
+	\label{fig:afchv1}
+\end{figure}
+
+
+Фактическая частота среза получилась $1.998kHz \approx 2kHz$.
+
+Полоса пропускания находится в интервале $(2kHz; 2.148MHz)$.
+
+
+\subsection{Получение динамических характеристик}
+
+Построим график динамической характеристики для частот $50Hz$ (рис. \ref{fig:garm50v}) и $50kHz$ (рис. \ref{fig:garm50kv}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.95\linewidth]{../imgs/FVCH/garm_50_V}
+	\caption{Динамическая характеристика ФВЧ для частоты $50Hz$}
+	\label{fig:garm50v}
+\end{figure}
+
+
+Напряжение на повторяющихся локальных максимумах $U_{out} \approx 4mV$
+
+$Ku = \dfrac{4mV}{1V} = 0.004$
+
+Выходное напряжение пренебрежимо мало по отношению ко входному, из этого можно сделать вывод, что сигнал данной частоты не пропускается через данный фильтр.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.95\linewidth]{../imgs/FVCH/garm_50k_V}
+	\caption{Динамическая характеристика ФВЧ для частоты $50kHz$}
+	\label{fig:garm50kv}
+\end{figure}
+
+Размах напряжения входного сигнала $2V$
+
+Размах напряжения выходного сигнала $3.172V$
+
+Рассчитаем фактический коэффициент усиления:
+
+$Ku_{fact} = \dfrac{3.172V}{2V} = 1.586$
+
+$Ku_{teor} = 1.586$
+
+$Ku_{teor} = Ku_{fact}$
+
+
+\subsection{Исследование влияния погрешностей}
+
+Найдем зависимость между частотой среза и погрешностью сопротивления (рис. \ref{fig:pogrrv}). 
+
+$R_{pogr} = 1.1R$
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\linewidth]{../imgs/FVCH/pogr_R_V}
+	\caption{АЧХ и ФЧХ для ФВЧ с увеличенным сопротивлением}
+	\label{fig:pogrrv}
+\end{figure}
+
+В данном случае частота среза стала меньше, и составляет $1.817KHz$.
+
+Найдем зависимость между частотой среза и погрешностью емкости (рис. \ref{fig:pogrcv}). 
+
+$C_{pogr} = 1.1C$
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\linewidth]{../imgs/FVCH/pogr_C_V}
+	\caption{АЧХ и ФЧХ для ФВЧ с увеличенной емкостью}
+	\label{fig:pogrcv}
+\end{figure}
+
+В данном случае частота среза стала меньше, и также составляет $1.817KHz$.
+
+Из проделанных опытов можно сделать вывод, что увеличение сопротивления или емкости уменьшает частоту среза.
+
+Действительно, частота среза обратно зависит $R$ и $C$ и находится по формуле:
+
+$f_{cp} = \dfrac{1}{2\pi RC}$
+
+Можно заметить, что при изменении $R$ и $C$ в одно и то же число раз, получена одна и та же частота среза.
+Это можно также объяснить формулой, по которой находится частота среза.
+
+\section{Подгон параметров}
+
+Изменим схемы следующим образом:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\linewidth]{../imgs/FNCH/sh_fnch_p}
+	\caption{ФНЧ с подогнанными параметрами}
+	\label{fig:shfnchp}
+\end{figure}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\linewidth]{../imgs/FVCH/sh_fvch_p}
+	\caption{ФВЧ с подогнанными параметрами}
+	\label{fig:shfvchp}
+\end{figure}
+
+Полученные АЧХ и ФЧХ для ФНЧ и ФВЧ:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\linewidth]{../imgs/FNCH/gr_fnch_p1}
+	\caption{АЧХ и ФЧХ для ФНЧ}
+	\label{fig:grfnchp1}
+\end{figure}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\linewidth]{../imgs/FVCH/gr_fvch_p1}
+	\caption{АЧХ и ФЧХ для ФВЧ}
+	\label{fig:grfvchp1}
+\end{figure}
+
+$Ku_{teor}$ идеально совпадает с $Ku_{pract}$ для ФНЧ и ФВЧ и без подгона.
+
+\end{document} % конец документа
+
+
+
+
+
+
